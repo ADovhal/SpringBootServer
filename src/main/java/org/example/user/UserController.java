@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,6 +44,14 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/all/show")
+    public ModelAndView showAllUsers() {
+        List<User> userList = userService.getAllUsers();
+        ModelAndView modelAndView = new ModelAndView("userList");
+        modelAndView.addObject("userList", userList);
+        return modelAndView;
     }
 
     @GetMapping("/{email}")
