@@ -30,7 +30,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully");
         } catch (DuplicateUserException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-
         }
     }
 

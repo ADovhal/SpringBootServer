@@ -31,7 +31,7 @@ form.addEventListener('submit', (event) => {
   })
   .catch(error => {
     console.error(error);
-    // Handle the error here
+    alert('Error creating user');
   });
 });
 
